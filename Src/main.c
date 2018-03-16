@@ -54,7 +54,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 volatile uint8_t spiTxBuf[9] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
-volatile uint8_t spiRxBuf[9];
+volatile uint8_t spiRxBuf[32];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -297,7 +297,7 @@ void HAL_SPI_RxCpltCallback (SPI_HandleTypeDef * hspi)
     printf("HAL_SPI_RxCpltCallback, size %u: ", hspi->RxXferSize);
     for (i = 0; i < hspi->RxXferSize; i++)
     {
-        printf("0x%02x ", spiRxBuf[i]);
+        printf("%02x ", spiRxBuf[i]);
     }
     printf("\n");
     
